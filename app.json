@@ -1,0 +1,12 @@
+{
+  "name": "VideoConversor",
+  "displayName": "VideoConversor",
+  "expo": {
+    "name": "VideoConversor",
+    "slug": "VideoConversor",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
