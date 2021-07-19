@@ -1,16 +1,16 @@
 import React from 'react';
-import {
-    View,
-    TextInput,
-    Alert,
-    StatusBar,
-    Text
-} from 'react-native';
+import { Alert, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/core'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { verificationCode } from '../../services/SendGrid';
-import { styles } from './styles';
+import { 
+    Box,
+    Container, 
+    Footer, 
+    IconBackground, 
+    Input
+} from './styles';
 
 export function Confirmation() {
     const navigation = useNavigation();
@@ -30,31 +30,30 @@ export function Confirmation() {
     }
 
     return (
-        <View style={styles.container}>
+        <Container>
             <StatusBar
                 barStyle='light-content'
                 backgroundColor='transparent'
                 translucent
             />
 
-            <View style={styles.box}>
-                <View style={styles.iconBackground}></View>
+            <Box>
+                <IconBackground></IconBackground>
 
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={styles.icon}/>
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={styles.icon}/>
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={styles.icon}/>
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={styles.icon}/>             
-            </View>
+                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />
+                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />
+                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />
+                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />             
+            </Box>
 
 
-            <TextInput
-                style={styles.input}
+            <Input
                 placeholder="Your code"
                 keyboardType="numeric"
                 onChangeText={handleInputChange}
             />
 
-            <Text style={styles.footer}>JMV Conversor</Text>
-        </View>
+            <Footer>JMV Conversor</Footer>
+        </Container>
     );
 }

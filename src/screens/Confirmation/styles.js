@@ -1,39 +1,37 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    box: {
-        width: '100%',
-        height: '30%',
-        backgroundColor: '#6fbbd3',
-        position: 'absolute',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        top: 0
-    },
-    icon: {
-        top: '50%',
-    },
-    iconBackground: {
-        bottom: -20,
-        position: 'absolute',
-        backgroundColor: '#f3f3f3',
-        width: '70%',
-        height: 60,
-        borderRadius: 70
-    },
-    input: {
-        borderBottomWidth: 1,
-        borderColor: '#6fbbd3',
-        width: '20%'
-    },  
-    footer: {
-        position: 'absolute',
-        bottom: 15,
-        
-    }
-});
+export const Container = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Box = styled.View`
+    width: 100%;
+    height: 30%;
+    background-color: #6fbbd3;
+    position: absolute;
+    justify-content: center;
+    flex-direction: row;
+    top: 0;
+`;
+
+export const IconBackground = styled.View`
+    bottom: -20;
+    position: absolute;
+    background-color: #f3f3f3;
+    width: 70%;
+    height: 60;
+    border-radius: 70;
+`;
+
+export const Input = styled.TextInput`
+    border-bottom-width: 1;
+    border-color: #6fbbd3;
+    width: 20%;
+`;
+
+export const Footer = styled.Text`
+    position: absolute;
+    bottom: 15;
+`;

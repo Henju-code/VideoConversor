@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    StatusBar
-} from 'react-native';
-import { useNavigation } from '@react-navigation/core'
+import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { sendEmailVerification } from '../../services/SendGrid';
-import { styles } from './styles';
+import { 
+    Box,
+    Button,
+    ButtonTitle,
+    Container,
+    Footer,
+    Input
+ } from './styles';
 
 export function Login() {
     const [emailAddress, setEmailAddress] = useState('');
@@ -20,38 +21,36 @@ export function Login() {
     function handleSubmit() {
         sendEmailVerification(emailAddress);
         navigation.navigate('Confirmation');
-    }
+    };
 
     return (
-        <View style={styles.container}>
+        <Container>
             <StatusBar
                 barStyle='light-content'
                 backgroundColor='transparent'
                 translucent
             />
 
-            <View style={styles.box}>
-                <Icon name="email" size={200} color="#6fbbd3" style={styles.icon}/>
-                <Icon name="email" size={180} color="#fff" style={styles.icon2}/>
+            <Box>
+                <Icon name="email" size={200} color="#6fbbd3" style={{top: '50%'}}/>
+                <Icon name="email" size={180} color="#fff" style={{top: '-40%'}}/>
 
-            </View>
+            </Box>
 
-            <TextInput
+            <Input
                 placeholder="Digite your best email"
                 keyboardType="email-address"
                 onChangeText={setEmailAddress}
-                style={styles.input}
             />
 
-            <TouchableOpacity
+            <Button
                 style={styles.button}
                 onPress={() => handleSubmit()}
             >
-                <Text style={styles.buttonTitle}>Submit</Text>
-            </TouchableOpacity>
+                <ButtonTitle>Submit</ButtonTitle>
+            </Button>
 
-            <Text style={styles.footer}>JMV Conversor</Text>
-
-        </View>
+            <Footer>JMV Conversor</Footer>
+        </Container>
     );
-}
+};

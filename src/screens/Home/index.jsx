@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-    Image,
-    View,
-    TouchableOpacity,
-    Text,
-    Alert
-} from 'react-native';
+import { Alert } from 'react-native';
 import { RNFFmpeg } from 'react-native-ffmpeg';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
@@ -13,7 +7,17 @@ import * as MediaLibrary from "expo-media-library";
 
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { styles } from './styles';
+import { 
+    Container,
+    Box,
+    Card,
+    Thumbnail,
+    VideoTitle,
+    CardButtonIcon,
+    ButtonTitle,
+    UploadButton,
+    Footer
+ } from './styles';
 
 const jmvVideoConversorDir = FileSystem.cacheDirectory + 'JMV/';
 const jmvFileUri = (videoId) => jmvVideoConversorDir + `video-${videoId}.mp4`;
@@ -98,16 +102,16 @@ export function Home() {
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.box}>
-            </View>
+        <Container>
+            <Box></Box>
+
             {file &&
-                <View style={styles.card}>
-                    <Image source={{ uri: file }} style={styles.thumbnail} />
+                <Card>
+                    <Thumbnail source={{ uri: file }} />
 
-                    <Text style={styles.videoTitle}>Video-01.mp4</Text>
+                    <VideoTitle>Video-01.mp4</VideoTitle>
 
-                    <TouchableOpacity style={styles.icon}>
+                    <CardButtonIcon>
                         {videoConverted 
                         ?
                         <Icon
@@ -117,25 +121,19 @@ export function Home() {
                             onPress={() => { handleMove() }}
                         />
                         :
-                        <Text
-                            style={styles.buttonCardText}
-                            onPress={() => { handleConversor() }}
-                        >
+                        <ButtonTitle onPress={() => { handleConversor() }}>
                             {!loading ? 'Convert now' : 'Loading...'}
-                        </Text>
+                        </ButtonTitle>
                         }
-                    </TouchableOpacity>
-                </View>
+                    </CardButtonIcon>
+                </Card>
             }
 
-            <TouchableOpacity
-                style={styles.uploadButton}
-                onPress={pickVideo}
-            >
+            <UploadButton onPress={pickVideo}>
                 <Icon name="plus" size={30} color="#fff" />
-            </TouchableOpacity>
+            </UploadButton>
 
-            <Text style={styles.footer}>JMV Conversor</Text>
-        </View>
+            <Footer>JMV Conversor</Footer>
+        </Container>
     );
-}
+};

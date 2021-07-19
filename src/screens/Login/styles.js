@@ -1,45 +1,41 @@
-import { StyleSheet } from 'react-native'
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    box: {
-        width: '100%',
-        height: '30%',
-        backgroundColor: '#6fbbd3',
-        position: 'absolute',
-        top: 0,
-        alignItems: 'center'
-    },
-    icon: {
-        top: '50%',
-    },
-    icon2: {
-        top: '-40%',
-    },
-    input: {
-        marginTop: '40%',
-        borderBottomWidth: 1,
-        borderColor: '#6fbbd3',
-        width: '60%'
-    },  
-    button: {
-        backgroundColor: '#6fbbd3',
-        paddingHorizontal:60,
-        paddingVertical: 20,
-        borderRadius: 15,
-        marginTop: 30
-    },
-    buttonTitle: {
-        color: '#fff',
-        fontSize: 20,
-        fontWeight: '400'
-    },
-    footer: {
-        position: 'absolute',
-        bottom: 15,
-    },
-});
+export const Container = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Box = styled.View`
+    width: 100%;
+    height: 30%;
+    background-color: #6fbbd3;
+    position: absolute;
+    top: 0;
+    align-items: center;
+`;
+
+export const Input = styled.TextInput`
+    margin-top: 40%;
+    border-width: 1;
+    border-color: #6fbbd3;
+    width: 60%;
+`;
+
+export const Button = styled.TouchableOpacity`
+    background-color: #6fbbd3;
+    padding: 20 60;
+    border-radius: 15;
+    margin-top: 30;
+`;
+
+export const ButtonTitle = styled.Text`
+    color: #fff;
+    font-size: 20;
+    font-weight: 400;
+`;
+
+export const Footer = styled.Text`
+    position: absolute;
+    bottom: 15;
+`;
