@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = 'https://api.sendgrid.com/v3/mail/send';
 
-const token = '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';
+const token = 'Your_SendGrid_Key';
 
 export const verificationCode = '2021';
 
