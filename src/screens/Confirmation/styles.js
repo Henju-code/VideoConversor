@@ -23,6 +23,7 @@ export const IconBackground = styled.View`
     width: 70%;
     height: 60;
     border-radius: 70;
+    flex-direction: row;
 `;
 
 export const Input = styled.TextInput`

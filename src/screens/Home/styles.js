@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const Box = styled.View`
     width: 100%;
-    height: 100%;
+    height: 30%;
     background-color: #6fbbd3;
     position: absolute;
     top: 0;
@@ -29,7 +29,10 @@ export const Card = styled.View`
 export const Thumbnail = styled.Image`
     width: 100;
     height: 80;
-    margin: 0 20;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 20;
+    margin-left: 20;
     border-width: 2;
     border-color: #6fbbd3;
     border-radius: 7;
@@ -56,7 +59,7 @@ export const UploadButton = styled.TouchableOpacity`
     align-items: center;
 `;
 
-export const Footer = styled.View`
+export const Footer = styled.Text`
     position: absolute;
     bottom: 15;
 `;

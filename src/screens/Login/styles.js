@@ -15,16 +15,31 @@ export const Box = styled.View`
     align-items: center;
 `;
 
+export const IconBackground = styled.View`
+    bottom: -65;
+    position: absolute;
+    background-color: #6fbbd3;
+    width: 170;
+    height: 140;
+    border-radius: 20;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
 export const Input = styled.TextInput`
     margin-top: 40%;
-    border-width: 1;
+    border-bottom-width: 1;
     border-color: #6fbbd3;
     width: 60%;
 `;
 
 export const Button = styled.TouchableOpacity`
     background-color: #6fbbd3;
-    padding: 20 60;
+    padding-right: 60;
+    padding-left: 60;
+    padding-top: 20;
+    padding-bottom: 20;
     border-radius: 15;
     margin-top: 30;
 `;

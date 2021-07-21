@@ -5,9 +5,8 @@ import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import * as MediaLibrary from "expo-media-library";
 
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { 
+import {
     Container,
     Box,
     Card,
@@ -17,7 +16,7 @@ import {
     ButtonTitle,
     UploadButton,
     Footer
- } from './styles';
+} from './styles';
 
 const jmvVideoConversorDir = FileSystem.cacheDirectory + 'JMV/';
 const jmvFileUri = (videoId) => jmvVideoConversorDir + `video-${videoId}.mp4`;
@@ -29,21 +28,28 @@ export function Home() {
     const [videoCode, setVideoCode] = useState('');
 
     useEffect(() => {
-
-        // Checks if jmvVideoConversor directory exists. If not, creates it
         async function ensureDirExists() {
-            const dirInfo = await FileSystem.getInfoAsync(jmvVideoConversorDir);
-            if (!dirInfo.exists) {
-                console.log("JMV_Video_Conversor directory doesn't exist, creating...");
-                await FileSystem.makeDirectoryAsync(jmvVideoConversorDir, { intermediates: true });
+            try {
+                const dirInfo = await FileSystem.getInfoAsync(jmvVideoConversorDir);
+
+                if (!dirInfo.exists) {
+                    console.log("JMV_Video_Conversor directory doesn't exist, creating...");
+                    await FileSystem.makeDirectoryAsync(jmvVideoConversorDir, { intermediates: true });
+                }
+            } catch (error) {
+                console.log(error);
             }
         }
 
         async function getPermission() {
-            const permission = await MediaLibrary.requestPermissionsAsync();
+            try {
+                const permission = await MediaLibrary.requestPermissionsAsync();
 
-            if (permission.status != 'granted') {
-                return;
+                if (permission.status != 'granted') {
+                    return;
+                }
+            } catch (error) {
+                console.log(error);
             }
         }
 
@@ -59,15 +65,20 @@ export function Home() {
     }
 
     const pickVideo = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Videos,
-        });
+        try {
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Videos,
+            });
 
-        if (!result.cancelled) {
-            setFile(result.uri);
+            if (!result.cancelled) {
+                setFile(result.uri);
+            }
+
+            setVideoConverted(false);
+        } catch (error) {
+            console.log(error);
         }
 
-        setVideoConverted(false);
     };
 
     async function handleMove() {
@@ -112,18 +123,18 @@ export function Home() {
                     <VideoTitle>Video-01.mp4</VideoTitle>
 
                     <CardButtonIcon>
-                        {videoConverted 
-                        ?
-                        <Icon
-                            name="download"
-                            size={30}
-                            color="#6fbbd3"
-                            onPress={() => { handleMove() }}
-                        />
-                        :
-                        <ButtonTitle onPress={() => { handleConversor() }}>
-                            {!loading ? 'Convert now' : 'Loading...'}
-                        </ButtonTitle>
+                        {videoConverted
+                            ?
+                            <Icon
+                                name="download"
+                                size={30}
+                                color="#6fbbd3"
+                                onPress={() => { handleMove() }}
+                            />
+                            :
+                            <ButtonTitle onPress={() => { handleConversor() }}>
+                                {!loading ? 'Convert now' : 'Loading...'}
+                            </ButtonTitle>
                         }
                     </CardButtonIcon>
                 </Card>

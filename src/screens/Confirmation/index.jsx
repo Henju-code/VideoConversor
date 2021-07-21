@@ -4,11 +4,11 @@ import { useNavigation } from '@react-navigation/core'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { verificationCode } from '../../services/SendGrid';
-import { 
+import {
     Box,
-    Container, 
-    Footer, 
-    IconBackground, 
+    Container,
+    Footer,
+    IconBackground,
     Input
 } from './styles';
 
@@ -38,12 +38,12 @@ export function Confirmation() {
             />
 
             <Box>
-                <IconBackground></IconBackground>
-
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />
-                <Icon name="asterisk" size={60} color="#6fbbd3" style={{top: '50%'}} />             
+                <IconBackground>
+                    <Icon name="asterisk" size={60} color="#6fbbd3" />
+                    <Icon name="asterisk" size={60} color="#6fbbd3" />
+                    <Icon name="asterisk" size={60} color="#6fbbd3" />
+                    <Icon name="asterisk" size={60} color="#6fbbd3" />
+                </IconBackground>
             </Box>
 
 

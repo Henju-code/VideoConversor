@@ -10,6 +10,7 @@ import {
     ButtonTitle,
     Container,
     Footer,
+    IconBackground,
     Input
  } from './styles';
 
@@ -32,9 +33,9 @@ export function Login() {
             />
 
             <Box>
-                <Icon name="email" size={200} color="#6fbbd3" style={{top: '50%'}}/>
-                <Icon name="email" size={180} color="#fff" style={{top: '-40%'}}/>
-
+                <IconBackground>
+                    <Icon name="email" size={180} color="#fff" style={{ marginLeft: -5 }} />
+                </IconBackground>
             </Box>
 
             <Input
@@ -43,10 +44,7 @@ export function Login() {
                 onChangeText={setEmailAddress}
             />
 
-            <Button
-                style={styles.button}
-                onPress={() => handleSubmit()}
-            >
+            <Button onPress={() => handleSubmit()}>
                 <ButtonTitle>Submit</ButtonTitle>
             </Button>
 
